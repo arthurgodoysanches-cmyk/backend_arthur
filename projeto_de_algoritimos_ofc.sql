@@ -35,16 +35,7 @@ CREATE TABLE `clientes` (
   `telefone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `clientes`
---
 
-INSERT INTO `clientes` (`id`, `nome`, `email`, `senha`, `telefone`) VALUES
-(1, 'victor', 'victor.777.craft@gmail.com', '$2y$10$bh7OLz2thQjch92rqM5L/OOpMTMii9LiCksTJ08XWINOXIx7cqeFe', '55 +45 99111-5615');
-
--- --------------------------------------------------------
-
---
 -- Estrutura para tabela `produtos`
 --
 
