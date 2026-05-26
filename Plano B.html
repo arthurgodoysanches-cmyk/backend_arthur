@@ -109,7 +109,7 @@
             light.position.set(10, 20, 10);
             scene.add(light);
 
-            // Chão Grid
+        
             const grid = new THREE.GridHelper(400, 80, 0x00ff88, 0x222222);
             scene.add(grid);
 
@@ -171,7 +171,6 @@
                 b.position.set((Math.random()-0.5)*160, h/2, (Math.random()-0.5)*160);
                 scene.add(b);
                 obstacles.push(b);
-                // Luzes nas bordas
                 const edge = new THREE.BoxHelper(b, 0x00ff88);
                 scene.add(edge);
             }
@@ -268,7 +267,6 @@
             if (!active) return;
             requestAnimationFrame(loop);
 
-            // Jogador
             vY -= 0.01; camera.position.y += vY;
             if (camera.position.y <= 1.7) { camera.position.y = 1.7; vY = 0; }
             camera.rotation.set(mouse.pitch, mouse.yaw, 0, 'YXZ');
@@ -282,7 +280,6 @@
             weapon.position.copy(camera.position); weapon.quaternion.copy(camera.quaternion);
             weapon.translateZ(-0.8); weapon.translateX(0.4); weapon.translateY(-0.35);
 
-            // Bot IA
             bot.lookAt(camera.position.x, 1.5, camera.position.z);
             const bDist = bot.position.distanceTo(camera.position);
             const bDir = new THREE.Vector3().subVectors(camera.position, bot.position).normalize();
@@ -302,7 +299,6 @@
                 bot.position.add(new THREE.Vector3(bDir.z, 0, -bDir.x).multiplyScalar(0.12 * diff));
             }
 
-            // Balas / Projéteis
             for (let i = bullets.length - 1; i >= 0; i--) {
                 const b = bullets[i]; b.position.add(b.velocity);
                 
@@ -326,7 +322,6 @@
                 }
             }
 
-            // Itens
             ammoPacks.forEach((p, i) => {
                 p.rotation.y += 0.05;
                 if(camera.position.distanceTo(p.position) < 2.5) {
@@ -334,7 +329,6 @@
                 }
             });
 
-            // HUD
             document.getElementById('hp-fill').style.width = (hpP/10) + "%";
             document.getElementById('b-hp-fill').style.width = (hpB/10) + "%";
             document.getElementById('ammo-val').innerText = ammo;
